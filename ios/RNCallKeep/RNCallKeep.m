@@ -706,7 +706,7 @@ continueUserActivity:(NSUserActivity *)userActivity
 #endif
     //this means something big changed, so tell the JS. The JS should
     //probably respond by hanging up all calls.
-    [self sendEventWithNameWrapper:RNCallKeepProviderReset body:nil];
+    [self sendEventWithNameWrapper:RNCallKeepProviderReset body:@{}];
 }
 
 // Starting outgoing call
@@ -805,7 +805,7 @@ RCT_EXPORT_METHOD(reportUpdatedCall:(NSString *)uuidString contactIdentifier:(NS
     [[NSNotificationCenter defaultCenter] postNotificationName:AVAudioSessionInterruptionNotification object:nil userInfo:userInfo];
 
     [self configureAudioSession];
-    [self sendEventWithNameWrapper:RNCallKeepDidActivateAudioSession body:nil];
+    [self sendEventWithNameWrapper:RNCallKeepDidActivateAudioSession body:@{}];
 }
 
 - (void)provider:(CXProvider *)provider didDeactivateAudioSession:(AVAudioSession *)audioSession
@@ -813,7 +813,7 @@ RCT_EXPORT_METHOD(reportUpdatedCall:(NSString *)uuidString contactIdentifier:(NS
 #ifdef DEBUG
     NSLog(@"[RNCallKeep][CXProviderDelegate][provider:didDeactivateAudioSession]");
 #endif
-    [self sendEventWithNameWrapper:RNCallKeepDidDeactivateAudioSession body:nil];
+    [self sendEventWithNameWrapper:RNCallKeepDidDeactivateAudioSession body:@{}];
 }
 
 @end
