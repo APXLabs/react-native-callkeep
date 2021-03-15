@@ -106,6 +106,7 @@ RCT_EXPORT_MODULE()
     _hasListeners = YES;
     if ([_delayedEvents count] > 0) {
         [self sendEventWithName:RNCallKeepDidLoadWithEvents body:_delayedEvents];
+        [_delayedEvents removeAllObjects];
     }
 }
 
